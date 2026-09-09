@@ -6,9 +6,11 @@
     <title>HayatPlanım</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="container">
+
         <h1>HayatPlanım</h1>
 
         <div class="input-area">
@@ -17,12 +19,25 @@
                 id="taskInput"
                 placeholder="Yapılacak bir şey yazın..."
             >
-            <button id="addButton">Ekle</button>
+
+            <button id="addButton">
+                Ekle
+            </button>
+        </div>
+
+        <div class="list-header">
+            <span>Görevlerim</span>
+
+            <button id="clearAllButton">
+                Tümünü Sil
+            </button>
         </div>
 
         <div id="taskList"></div>
+
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>

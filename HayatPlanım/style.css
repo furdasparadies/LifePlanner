@@ -17,6 +17,8 @@ body {
     margin: 0 auto;
 }
 
+/* BAŞLIK */
+
 h1 {
     text-align: center;
     color: #c05a86;
@@ -24,10 +26,12 @@ h1 {
     font-size: 36px;
 }
 
+/* INPUT ALANI */
+
 .input-area {
     display: flex;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 #taskInput {
@@ -37,12 +41,19 @@ h1 {
     border-radius: 10px;
     outline: none;
     font-size: 16px;
-    background: #fff;
+    background: #ffffff;
+    color: #4a3040;
 }
 
 #taskInput:focus {
     border-color: #c05a86;
 }
+
+#taskInput::placeholder {
+    color: #b99aa8;
+}
+
+/* EKLE BUTONU */
 
 #addButton {
     padding: 14px 22px;
@@ -52,33 +63,121 @@ h1 {
     color: white;
     font-size: 16px;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 #addButton:hover {
     background: #aa4773;
 }
 
+/* LİSTE BAŞLIĞI */
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 0 5px;
+}
+
+.list-header span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6a4357;
+}
+
+/* TÜMÜNÜ SİL */
+
+#clearAllButton {
+    padding: 8px 14px;
+    border: 2px solid #9b315f;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #9b315f;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#clearAllButton:hover {
+    background: #9b315f;
+    color: white;
+}
+
+/* GÖREV LİSTESİ */
+
 #taskList {
-    background: #fff;
+    background: #ffffff;
     border-radius: 12px;
     padding: 20px;
     min-height: 100px;
 }
 
+/* GÖREV */
+
 .task {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 14px;
     margin-bottom: 10px;
     background: #fff5f8;
     border: 1px solid #f0d1de;
     border-radius: 8px;
+    transition: 0.2s;
 }
 
 .task:last-child {
     margin-bottom: 0;
 }
+
+.task:hover {
+    border-color: #e5b6ca;
+}
+
+/* CHECKBOX */
+
+.task-checkbox {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: #c05a86;
+}
+
+/* GÖREV METNİ */
+
+.task-text {
+    flex: 1;
+    font-size: 16px;
+    color: #4a3040;
+}
+
+/* TAMAMLANMIŞ GÖREV */
+
+.task.completed .task-text {
+    text-decoration: line-through;
+    color: #a88d99;
+}
+
+/* DÜZENLE */
+
+.editButton {
+    border: none;
+    background: #5b3a82;
+    color: white;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: 0.2s;
+}
+
+.editButton:hover {
+    background: #472d68;
+}
+
+/* SİL */
 
 .deleteButton {
     border: none;
@@ -87,8 +186,44 @@ h1 {
     padding: 7px 12px;
     border-radius: 6px;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .deleteButton:hover {
     background: #d77d9f;
+}
+
+/* MOBİL */
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 25px 15px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    #addButton {
+        width: 100%;
+    }
+
+    .task {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .task-text {
+        min-width: 150px;
+    }
+
+    .editButton {
+        margin-left: 30px;
+    }
+
 }

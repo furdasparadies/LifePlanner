@@ -6,30 +6,19 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #fceff5;
+    background-color: #fceff5;
+    background-image:
+        radial-gradient(#e8a9c4 1px, transparent 1px);
+    background-size: 25px 25px;
     min-height: 100vh;
     padding: 40px 20px;
     color: #4a3040;
-
-    background-color: #fceff5;
-    background-image: url("https://www.transparenttextures.com/patterns/flowers.png");
-    background-repeat: repeat;
-}
-
-#taskCounter {
-    text-align: center;
-    margin-top: 20px;
-    color: #9b315f;
-    font-size: 14px;
-    font-weight: bold;
 }
 
 .container {
-    max-width: 650px;
+    max-width: 1100px;
     margin: 0 auto;
 }
-
-/* BAŞLIK */
 
 h1 {
     text-align: center;
@@ -38,12 +27,10 @@ h1 {
     font-size: 36px;
 }
 
-/* INPUT ALANI */
-
 .input-area {
     display: flex;
     gap: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 #taskInput {
@@ -57,27 +44,9 @@ h1 {
     color: #4a3040;
 }
 
-#errorMessage {
-    color: #9b315f;
-    background: #fff0f5;
-    border: 1px solid #e5b6ca;
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-top: -15px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    display: none;
-}
-
 #taskInput:focus {
     border-color: #c05a86;
 }
-
-#taskInput::placeholder {
-    color: #b99aa8;
-}
-
-/* EKLE BUTONU */
 
 #addButton {
     padding: 14px 22px;
@@ -87,14 +56,33 @@ h1 {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 #addButton:hover {
     background: #aa4773;
 }
 
-/* LİSTE BAŞLIĞI */
+#errorMessage {
+    color: #9b315f;
+    background: #fff0f5;
+    border: 1px solid #e5b6ca;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: none;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 25px;
+    align-items: start;
+}
+
+.tasks-section {
+    min-width: 0;
+}
 
 .list-header {
     display: flex;
@@ -110,8 +98,6 @@ h1 {
     color: #6a4357;
 }
 
-/* TÜMÜNÜ SİL */
-
 #clearAllButton {
     padding: 8px 14px;
     border: 2px solid #9b315f;
@@ -121,7 +107,6 @@ h1 {
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 #clearAllButton:hover {
@@ -129,16 +114,12 @@ h1 {
     color: white;
 }
 
-/* GÖREV LİSTESİ */
-
 #taskList {
     background: #ffffff;
     border-radius: 12px;
     padding: 20px;
     min-height: 100px;
 }
-
-/* GÖREV */
 
 .task {
     display: flex;
@@ -148,76 +129,307 @@ h1 {
     background: #fff5f8;
     border: 1px solid #f0d1de;
     border-radius: 8px;
-    transition: 0.2s;
+    gap: 8px;
 }
 
 .task:last-child {
     margin-bottom: 0;
 }
 
-.task:hover {
-    border-color: #e5b6ca;
-}
-
-/* CHECKBOX */
-
 .task-checkbox {
     width: 18px;
     height: 18px;
-    margin-right: 12px;
     cursor: pointer;
     accent-color: #c05a86;
+    flex-shrink: 0;
 }
-
-/* GÖREV METNİ */
 
 .task-text {
     flex: 1;
     font-size: 16px;
     color: #4a3040;
+    overflow-wrap: anywhere;
 }
-
-/* TAMAMLANMIŞ GÖREV */
 
 .task.completed .task-text {
     text-decoration: line-through;
     color: #a88d99;
 }
 
-/* DÜZENLE */
+.task.active-task {
+    border: 2px solid #c05a86;
+    background: #fff0f5;
+}
 
-.editButton {
+.editButton,
+.deleteButton,
+.start-task-button {
     border: none;
-    background: #5b3a82;
     color: white;
-    padding: 7px 12px;
+    padding: 7px 10px;
     border-radius: 6px;
     cursor: pointer;
-    margin-right: 8px;
-    transition: 0.2s;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.editButton {
+    background: #5b3a82;
 }
 
 .editButton:hover {
     background: #472d68;
 }
 
-/* SİL */
-
 .deleteButton {
-    border: none;
     background: #e89ab8;
-    color: white;
-    padding: 7px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s;
 }
 
 .deleteButton:hover {
     background: #d77d9f;
 }
 
+.start-task-button {
+    background: #c05a86;
+}
+
+.start-task-button:hover {
+    background: #aa4773;
+}
+
+#taskCounter {
+    text-align: center;
+    margin-top: 20px;
+    color: #9b315f;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* ZAMANLAYICI */
+
+.timer-panel {
+    background: #ffffff;
+    border-radius: 15px;
+    border: 1px solid #f0d1de;
+    box-shadow: 0 5px 20px rgba(150, 70, 110, 0.08);
+    overflow: hidden;
+}
+
+.timer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #c05a86;
+    color: white;
+    padding: 15px 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#fullscreenButton {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.timer-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.timer-content h3 {
+    color: #6a4357;
+    margin-bottom: 12px;
+}
+
+.timer-display {
+    font-size: 58px;
+    font-weight: bold;
+    color: #5b3a82;
+    margin: 15px 0;
+    font-variant-numeric: tabular-nums;
+}
+
+#timerStatus {
+    color: #9b315f;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.timer-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.timer-buttons button,
+#pauseOptions button,
+#saveSettingsButton {
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#startButton {
+    background: #c05a86;
+    color: white;
+}
+
+#stopButton {
+    background: #5b3a82;
+    color: white;
+}
+
+#resetButton {
+    background: #f0d1de;
+    color: #6a4357;
+}
+
+.pause-options {
+    display: none;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.pause-options button {
+    background: #e89ab8;
+    color: white;
+}
+
+#finishButton {
+    background: #9b315f !important;
+}
+
+.timer-settings {
+    background: #fff5f8;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.timer-settings h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.timer-settings label {
+    display: block;
+    font-size: 13px;
+    color: #6a4357;
+    margin-bottom: 5px;
+}
+
+.timer-settings input {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #e5b6ca;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+#saveSettingsButton {
+    width: 100%;
+    background: #5b3a82;
+    color: white;
+}
+
+.preset-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.preset-buttons button {
+    padding: 7px 10px;
+    border: 1px solid #e5b6ca;
+    border-radius: 6px;
+    background: white;
+    color: #9b315f;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.preset-buttons button:hover {
+    background: #fff0f5;
+}
+
+.weekly-stats {
+    margin-top: 25px;
+    padding: 15px;
+    background: #fff5f8;
+    border-radius: 10px;
+}
+
+.weekly-stats h3 {
+    margin-bottom: 12px;
+}
+
+#weeklyTotal {
+    font-size: 22px;
+    color: #5b3a82;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+#weeklyDetails {
+    font-size: 12px;
+    color: #9b315f;
+    line-height: 1.8;
+    text-align: left;
+}
+
+
+/* TAM EKRAN */
+
+.timer-panel.fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.timer-panel.fullscreen .timer-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.timer-panel.fullscreen .timer-display {
+    font-size: 100px;
+    margin: 40px 0;
+}
+
+.timer-panel.fullscreen .timer-header {
+    padding: 20px 30px;
+}
+
+
 /* MOBİL */
+
+@media (max-width: 850px) {
+
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .timer-panel {
+        width: 100%;
+    }
+
+}
 
 @media (max-width: 500px) {
 
@@ -239,15 +451,18 @@ h1 {
 
     .task {
         flex-wrap: wrap;
-        gap: 8px;
     }
 
     .task-text {
         min-width: 150px;
     }
 
-    .editButton {
-        margin-left: 30px;
+    .timer-display {
+        font-size: 48px;
+    }
+
+    .timer-buttons {
+        flex-wrap: wrap;
     }
 
 }

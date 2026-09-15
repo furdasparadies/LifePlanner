@@ -6,7 +6,6 @@
     <title>HayatPlanım</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <div class="container">
@@ -19,23 +18,153 @@
                 id="taskInput"
                 placeholder="Yapılacak bir şey yazın..."
             >
-            <p id="errorMessage"></p>
-
-            <button id="addButton">
-                Ekle
-            </button>
+            <button id="addButton">Ekle</button>
         </div>
 
-        <div class="list-header">
-            <span>Görevlerim</span>
+        <p id="errorMessage"></p>
 
-            <button id="clearAllButton">
-                Tümünü Sil
-            </button>
+        <div class="main-content">
+
+            <!-- GÖREVLER -->
+
+            <div class="tasks-section">
+
+                <div class="list-header">
+                    <span>Görevlerim</span>
+
+                    <button id="clearAllButton">
+                        Tümünü Sil
+                    </button>
+                </div>
+
+                <div id="taskList"></div>
+
+                <p id="taskCounter">Toplam görev: 0</p>
+
+            </div>
+
+
+            <!-- ZAMANLAYICI PANELİ -->
+
+            <div class="timer-panel" id="timerPanel">
+
+                <div class="timer-header" id="timerHeader">
+                    <span>⏱ HayatPlanım Zamanlayıcı</span>
+                    <button id="fullscreenButton">⛶</button>
+                </div>
+
+                <div class="timer-content">
+
+                    <h3 id="timerMode">Çalışma</h3>
+
+                    <div class="timer-display" id="timerDisplay">
+                        45:00
+                    </div>
+
+                    <p id="timerStatus">Hazır</p>
+
+                    <div class="timer-buttons">
+
+                        <button id="startButton">
+                            Başlat
+                        </button>
+
+                        <button id="stopButton">
+                            Durdur
+                        </button>
+
+                        <button id="resetButton">
+                            Sıfırla
+                        </button>
+
+                    </div>
+
+                    <div id="pauseOptions" class="pause-options">
+
+                        <button id="continueButton">
+                            Devam Et
+                        </button>
+
+                        <button id="finishButton">
+                            Bitir
+                        </button>
+
+                    </div>
+
+
+                    <!-- SÜRE AYARLARI -->
+
+                    <div class="timer-settings">
+
+                        <h3>Süre Ayarları</h3>
+
+                        <label for="workDuration">
+                            Çalışma süresi (dk)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="workDuration"
+                            value="45"
+                            min="1"
+                        >
+
+                        <label for="breakDuration">
+                            Mola süresi (dk)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="breakDuration"
+                            value="15"
+                            min="1"
+                        >
+
+                        <button id="saveSettingsButton">
+                            Süreleri Kaydet
+                        </button>
+
+                    </div>
+
+
+                    <!-- HAZIR SÜRELER -->
+
+                    <div class="preset-buttons">
+
+                        <button data-work="25" data-break="5">
+                            25 / 5
+                        </button>
+
+                        <button data-work="45" data-break="15">
+                            45 / 15
+                        </button>
+
+                        <button data-work="50" data-break="10">
+                            50 / 10
+                        </button>
+
+                    </div>
+
+
+                    <!-- HAFTALIK İSTATİSTİK -->
+
+                    <div class="weekly-stats">
+
+                        <h3>Haftalık Çalışma</h3>
+
+                        <div id="weeklyTotal">
+                            0 saat 0 dakika
+                        </div>
+
+                        <div id="weeklyDetails"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-
-        <div id="taskList"></div>
-        <p id="taskCounter">Toplam görev: 0</p>
 
     </div>
 

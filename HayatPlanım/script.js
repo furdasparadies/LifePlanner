@@ -151,21 +151,32 @@ function renderTasks() {
 // YENİ GÖREV EKLE
 // =====================================
 
+
+const errorMessage = document.getElementById("errorMessage");
+
 function addTask() {
 
     const taskText = taskInput.value.trim();
 
     if (taskText === "") {
+
+        errorMessage.textContent =
+            "Lütfen bir görev yaz.";
+
+        errorMessage.style.display = "block";
+
+        taskInput.focus();
+
         return;
     }
 
+    errorMessage.style.display = "none";
 
     const newTask = {
         id: Date.now(),
         text: taskText,
         completed: false
     };
-
 
     tasks.push(newTask);
 

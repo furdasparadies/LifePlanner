@@ -45,6 +45,18 @@ h1 {
     color: #4a3040;
 }
 
+#errorMessage {
+    color: #9b315f;
+    background: #fff0f5;
+    border: 1px solid #e5b6ca;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: none;
+}
+
 #taskInput:focus {
     border-color: #c05a86;
 }

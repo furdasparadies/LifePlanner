@@ -1,3 +1,4 @@
+const taskCounter = document.getElementById("taskCounter");
 const taskInput = document.getElementById("taskInput");
 const addButton = document.getElementById("addButton");
 const taskList = document.getElementById("taskList");
@@ -39,6 +40,8 @@ function renderTasks() {
         if (task.completed) {
             taskElement.classList.add("completed");
         }
+        taskCounter.textContent = `Toplam görev: ${tasks.length}`;
+        
 
 
         // CHECKBOX

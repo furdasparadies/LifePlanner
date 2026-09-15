@@ -10,6 +10,18 @@ body {
     min-height: 100vh;
     padding: 40px 20px;
     color: #4a3040;
+
+    background-color: #fceff5;
+    background-image: url("https://www.transparenttextures.com/patterns/flowers.png");
+    background-repeat: repeat;
+}
+
+#taskCounter {
+    text-align: center;
+    margin-top: 20px;
+    color: #9b315f;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .container {
